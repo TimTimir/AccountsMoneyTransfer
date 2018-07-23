@@ -40,7 +40,7 @@ public class TransferMain {
         registry.bind("jsonProvider", configureJsonProvider());
         registry.bind("transferService", configureTransferService(dataSource, accountDAO));
         registry.bind("userService", configureUserService(dataSource));
-        registry.bind("accountService", configureAccountService(dataSource, accountDAO));
+        registry.bind("accountService", configureAccountService(accountDAO));
         return registry;
     }
 
@@ -65,7 +65,7 @@ public class TransferMain {
         return userService;
     }
 
-    private static AccountService configureAccountService(DataSource dataSource, AccountDAO accountDAO) {
+    private static AccountService configureAccountService(AccountDAO accountDAO) {
         AccountService accountService = new AccountService();
         accountService.setAccountDAO(accountDAO);
         return accountService;
